@@ -8,8 +8,8 @@ RUN pip install -r requirements.txt
 
 RUN pip install --upgrade six
 
-ENV FLASK_ENV=development
+EXPOSE 5000
 
-COPY . .
+COPY ./hello/app.py .
 
-CMD [ "python", "-m" , "flask", "run"]
+CMD [ "python", "-m" , "flask", "run","--host","0.0.0.0"]
