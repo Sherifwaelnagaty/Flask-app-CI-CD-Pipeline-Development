@@ -27,9 +27,11 @@ services:
       MYSQL_ROOT_PASSWORD:
       MYSQL_DATABASE: root
     volumes:
+      - ./backup.sh:/backup.sh
       - mysql_data:/var/lib/mysql
     restart: always    
     depends_on:
       - http
+    command: /bin/bash /backup.sh
 volumes:
   mysql_data:           
