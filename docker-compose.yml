@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   http:
@@ -12,17 +11,25 @@ services:
       FLASK_APP: http/app.py  # Adjust the path to where your Flask app entry point is
       FLASK_ENV: development
     command: flask run --host=0.0.0.0 --port=5000
-
-  hello:
-    build:
-      context: .
+  nginx:
+    image: nginx:latest
     ports:
-      - "8080:8080"  # Map port 8080 of the host to port 8080 of the container
+      - "8080:80"
     volumes:
-      - ./hello:/app/hello
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    restart: always  
+    depends_on:
+      - http
+  mysql:
+    image: mysql:latest
     environment:
-      FLASK_APP: hello/app.py  # Adjust the path to where your Flask app entry point is
-      FLASK_ENV: development
-    command: flask run --host=0.0.0.0 --port=8080
-
-    
+      MYSQL_ALLOW_EMPTY_PASSWORD: true
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: root
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always    
+    depends_on:
+      - http
+volumes:
+  mysql_data:           
