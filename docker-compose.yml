@@ -32,6 +32,6 @@ services:
     restart: always    
     depends_on:
       - http
-    command: /bin/bash /backup.sh
+    
 volumes:
   mysql_data:           
