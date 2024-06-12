@@ -1,11 +1,11 @@
 #!/bin/bash
 #MySQL Credentials 
 DB_USER="root"
-DB_PASS="password"
-DB_NAME="sample_db"
+DB_PASS=""
+DB_NAME="localhost"
 
 #Backup directory
-BACKUP_DIR="/path/to/backup/dir"
+BACKUP_DIR="/backup/dir"
 DATE=$(date +%F_%T)
 
 # Export the database

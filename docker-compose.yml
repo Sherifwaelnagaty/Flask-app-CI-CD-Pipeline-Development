@@ -1,7 +1,28 @@
 version: '3.8'
 
 services:
-  web:
-    build: .
+  http:
+    build:
+      context: . 
     ports:
-      - "5000:5000"   
+      - "5000:5000"  # Map port 5000 of the host to port 5000 of the container
+    volumes:
+      - ./http:/app/http
+    environment:
+      FLASK_APP: http/app.py  # Adjust the path to where your Flask app entry point is
+      FLASK_ENV: development
+    command: flask run --host=0.0.0.0 --port=5000
+
+  hello:
+    build:
+      context: .
+    ports:
+      - "8080:8080"  # Map port 8080 of the host to port 8080 of the container
+    volumes:
+      - ./hello:/app/hello
+    environment:
+      FLASK_APP: hello/app.py  # Adjust the path to where your Flask app entry point is
+      FLASK_ENV: development
+    command: flask run --host=0.0.0.0 --port=8080
+
+    

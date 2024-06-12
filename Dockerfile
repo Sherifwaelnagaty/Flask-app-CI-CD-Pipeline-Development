@@ -10,6 +10,6 @@ RUN pip install --upgrade six
 
 EXPOSE 5000
 
-COPY ./hello/app.py .
+COPY . .
 
 CMD [ "python", "-m" , "flask", "run","--host","0.0.0.0"]
