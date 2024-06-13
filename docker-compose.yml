@@ -3,10 +3,9 @@ services:
   http:
     build:
       context: . 
-    ports:
-      - "5000:5000"  # Map port 5000 of the host to port 5000 of the container
     volumes:
       - ./http:/app/http
+    image: sherifwaelnagaty/flask-app-dockerization  
     environment:
       FLASK_APP: http/app.py  # Adjust the path to where your Flask app entry point is
       FLASK_ENV: development
