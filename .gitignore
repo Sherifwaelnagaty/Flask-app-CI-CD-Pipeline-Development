@@ -115,3 +115,43 @@ docs/_build/
 # Upload file
 demos/form/uploads/*
 !demos/form/uploads/.gitkeep
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+*.tfplan
+
+# Ignore .terraform directory
+.terraform/
+
+# Ignore .gitignore file itself if it exists
+.gitignore
+
+# Ignore .DS_Store (macOS) and Thumbs.db (Windows) files
+.DS_Store
+Thumbs.db
+
+# Ignore any local backup files created by text editors or IDEs
+*~
+
+# Ignore override files as they're usually used to override resources locally and should not be checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore crash log files
+crash.log
+
+# Ignore terraform.tfvars file to avoid committing sensitive information
+terraform.tfvars
+
+# Ignore terraform.lock.hcl file to avoid committing sensitive information
+.terraform.lock.hcl
+
+delete.sh
+deploy.sh
