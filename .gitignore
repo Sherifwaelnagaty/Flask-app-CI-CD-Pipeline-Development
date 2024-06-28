@@ -152,6 +152,3 @@ terraform.tfvars
 
 # Ignore terraform.lock.hcl file to avoid committing sensitive information
 .terraform.lock.hcl
-
-delete.sh
-deploy.sh
